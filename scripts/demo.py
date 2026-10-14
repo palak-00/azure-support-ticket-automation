@@ -17,7 +17,7 @@ from fastapi.testclient import TestClient
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.main import app
-from app.database import init_db
+from app.database import init_db, Base, engine
 
 client = TestClient(app)
 
@@ -29,6 +29,8 @@ def print_step_header(title: str):
 
 
 def run_demo():
+    # Ensure fresh state for repeatable runs
+    Base.metadata.drop_all(bind=engine)
     init_db()
 
     # -------------------------------------------------------------
