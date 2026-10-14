@@ -3,13 +3,13 @@ Pytest Fixtures and Test Client Setup with In-Memory Database.
 """
 
 import pytest
-from sqlalchemy import create_engine
-from sqlalchemy.pool import StaticPool
-from sqlalchemy.orm import sessionmaker
 from fastapi.testclient import TestClient
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import StaticPool
 
-from app.main import app
 from app.database import Base, get_db
+from app.main import app
 
 # Use isolated SQLite in-memory DB with StaticPool for tests
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"

@@ -3,7 +3,8 @@ Unit tests for AI Ticket Classifier and Uncertainty Routing.
 """
 
 import pytest
-from app.services.classifier import get_classifier, CATEGORIES, CATEGORY_TEAM_MAP
+
+from app.services.classifier import get_classifier
 
 
 @pytest.fixture(scope="module")

@@ -3,7 +3,9 @@ SQLAlchemy ORM models for ticket storage and audit state.
 """
 
 from datetime import datetime
-from sqlalchemy import Column, String, Text, Float, Boolean, DateTime
+
+from sqlalchemy import Boolean, Column, DateTime, Float, String, Text
+
 from app.database import Base
 
 

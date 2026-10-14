@@ -4,7 +4,6 @@ Assigns P1-P4 priority ratings based on impact severity, business continuity ris
 and urgency signals in accordance with docs/PRIORITY_POLICY.md.
 """
 
-from typing import Dict, Any, Tuple
 import re
 
 P1_SIGNALS = [
@@ -77,7 +76,7 @@ P4_SIGNALS = [
 ]
 
 
-def determine_priority(category: str, message: str) -> Tuple[str, str]:
+def determine_priority(category: str, message: str) -> tuple[str, str]:
     """
     Evaluates ticket text and category to determine priority (P1-P4)
     and provides clear human-readable policy reasoning.

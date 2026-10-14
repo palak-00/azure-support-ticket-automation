@@ -4,7 +4,6 @@ Produces succinct incident summaries and enterprise-grade draft responses
 tailored to the ticket's category, priority, and specific context.
 """
 
-from typing import Dict, Any, Optional
 import re
 
 

@@ -4,15 +4,19 @@ summarization, persistence, duplicate checking, and human review approvals.
 """
 
 from datetime import datetime
-from typing import List, Optional, Dict, Any
-from sqlalchemy.orm import Session
+
 from fastapi import HTTPException, status
+from sqlalchemy.orm import Session
 
 from app.models.db_models import Ticket
-from app.models.schemas import TicketCreate, TicketApprovalRequest, TicketRejectionRequest
-from app.services.classifier import get_classifier, CATEGORY_TEAM_MAP
+from app.models.schemas import (
+    TicketApprovalRequest,
+    TicketCreate,
+    TicketRejectionRequest,
+)
+from app.services.classifier import CATEGORY_TEAM_MAP, get_classifier
 from app.services.priority import determine_priority
-from app.services.summarizer import generate_summary, generate_draft_response
+from app.services.summarizer import generate_draft_response, generate_summary
 
 
 class TicketService:
@@ -103,13 +107,13 @@ class TicketService:
 
     def list_tickets(
         self,
-        category: Optional[str] = None,
-        priority: Optional[str] = None,
-        status_filter: Optional[str] = None,
-        requires_manual_review: Optional[bool] = None,
+        category: str | None = None,
+        priority: str | None = None,
+        status_filter: str | None = None,
+        requires_manual_review: bool | None = None,
         limit: int = 50,
         offset: int = 0
-    ) -> List[Ticket]:
+    ) -> list[Ticket]:
         """List tickets with optional query filters."""
         query = self.db.query(Ticket)
         if category:

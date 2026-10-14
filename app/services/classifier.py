@@ -5,14 +5,14 @@ and domain-specific semantic heuristics for high-precision categorization and
 calibrated confidence estimation.
 """
 
-from typing import Dict, List, Tuple, Any, Optional
-import os
 import json
-import numpy as np
+import os
+from typing import Any
+
+import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
-import joblib
 
 # Target categories
 CATEGORIES = ["Billing", "Technical", "Access", "General"]
@@ -67,9 +67,9 @@ class TicketClassifier:
     AI Ticket Classifier with Calibrated Probabilities and Uncertainty Routing.
     """
 
-    def __init__(self, model_path: Optional[str] = None):
+    def __init__(self, model_path: str | None = None):
         self.model_path = model_path
-        self.pipeline: Optional[Pipeline] = None
+        self.pipeline: Pipeline | None = None
         self.is_trained = False
 
         if model_path and os.path.exists(model_path):
@@ -93,7 +93,7 @@ class TicketClassifier:
             ))
         ])
 
-    def train(self, texts: List[str], labels: List[str]) -> None:
+    def train(self, texts: list[str], labels: list[str]) -> None:
         """Train pipeline on labelled ticket texts."""
         self.pipeline = self._build_pipeline()
         self.pipeline.fit(texts, labels)
@@ -111,10 +111,10 @@ class TicketClassifier:
         self.is_trained = True
         self.model_path = path
 
-    def _compute_lexicon_scores(self, text: str) -> Tuple[Dict[str, float], bool]:
+    def _compute_lexicon_scores(self, text: str) -> tuple[dict[str, float], bool]:
         """Compute lexicon matching density for each category."""
         text_lower = text.lower()
-        scores: Dict[str, float] = {cat: 0.0 for cat in CATEGORIES}
+        scores: dict[str, float] = {cat: 0.0 for cat in CATEGORIES}
 
         for cat, keywords in DOMAIN_LEXICON.items():
             matches = sum(1.0 for kw in keywords if kw in text_lower)
@@ -127,7 +127,7 @@ class TicketClassifier:
             return scores, True
         return {cat: 0.25 for cat in CATEGORIES}, False
 
-    def predict_with_confidence(self, text: str) -> Dict[str, Any]:
+    def predict_with_confidence(self, text: str) -> dict[str, Any]:
         """
         Classifies input message, returns category, confidence scores,
         candidate ranking, and uncertainty routing analysis.
@@ -138,14 +138,14 @@ class TicketClassifier:
         # ML model probability estimation
         ml_probs_arr = self.pipeline.predict_proba([text])[0]
         classes = list(self.pipeline.classes_)
-        ml_probs: Dict[str, float] = {
+        ml_probs: dict[str, float] = {
             cls: float(prob) for cls, prob in zip(classes, ml_probs_arr)
         }
 
         # Domain lexicon prior
         lex_probs, has_matches = self._compute_lexicon_scores(text)
 
-        combined_scores: Dict[str, float] = {}
+        combined_scores: dict[str, float] = {}
         if has_matches:
             # Blend 70% model and 30% domain semantic keywords
             for cat in CATEGORIES:
@@ -205,10 +205,10 @@ class TicketClassifier:
 
 
 # Singleton classifier instance management
-_global_classifier: Optional[TicketClassifier] = None
+_global_classifier: TicketClassifier | None = None
 
 
-def get_classifier(model_path: Optional[str] = None) -> TicketClassifier:
+def get_classifier(model_path: str | None = None) -> TicketClassifier:
     """Return shared classifier instance, training if necessary."""
     global _global_classifier
     if _global_classifier is not None and _global_classifier.is_trained:

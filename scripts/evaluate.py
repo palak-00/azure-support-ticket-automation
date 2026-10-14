@@ -4,9 +4,9 @@ Evaluates the classifier against the 10 reserved test set tickets,
 prints confusion matrix, precision/recall/F1 metrics, and writes an evaluation report.
 """
 
-import sys
-import os
 import json
+import os
+import sys
 
 # Ensure project root is on PYTHONPATH
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

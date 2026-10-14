@@ -4,13 +4,13 @@ Initializes database tables, pre-warms the AI classifier, and registers routers.
 """
 
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
+from app.api.routes import router as api_router, health_check
 from app.database import init_db
 from app.services.classifier import get_classifier
-from app.api.routes import router as api_router
 
 
 @asynccontextmanager
@@ -49,7 +49,6 @@ app.add_middleware(
 # Mount API routers
 app.include_router(api_router, prefix="/api/v1", tags=["Support Tickets"])
 # Also mount health directly at root for Azure App Service health probe default path
-from app.api.routes import health_check
 app.add_api_route("/health", health_check, methods=["GET"], tags=["Health Check"])
 
 

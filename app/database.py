@@ -3,9 +3,10 @@ Database session and engine configuration using SQLAlchemy.
 """
 
 import os
+from collections.abc import Generator
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker, Session
-from typing import Generator
+from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./tickets.db")
 

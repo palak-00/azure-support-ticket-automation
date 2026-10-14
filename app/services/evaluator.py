@@ -4,14 +4,16 @@ Calculates test set accuracy, per-class metrics, confusion matrix,
 and priority policy statistics on the reserved test set.
 """
 
-import os
 import json
-from typing import Dict, Any, List
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-from app.services.classifier import get_classifier, CATEGORIES
+import os
+from typing import Any
+
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+from app.services.classifier import CATEGORIES, get_classifier
 
 
-def run_test_set_evaluation() -> Dict[str, Any]:
+def run_test_set_evaluation() -> dict[str, Any]:
     """
     Evaluates the classifier on the reserved test tickets in data/tickets_dataset.json.
     Returns structured accuracy metrics, confusion matrix, and performance stats.
@@ -27,9 +29,9 @@ def run_test_set_evaluation() -> Dict[str, Any]:
 
     classifier = get_classifier()
 
-    y_true: List[str] = []
-    y_pred: List[str] = []
-    predictions_detail: List[Dict[str, Any]] = []
+    y_true: list[str] = []
+    y_pred: list[str] = []
+    predictions_detail: list[dict[str, Any]] = []
 
     for t in test_tickets:
         pred_result = classifier.predict_with_confidence(t["message"])
@@ -50,7 +52,7 @@ def run_test_set_evaluation() -> Dict[str, Any]:
 
     # Confusion matrix
     cm = confusion_matrix(y_true, y_pred, labels=CATEGORIES)
-    cm_dict: Dict[str, Dict[str, int]] = {}
+    cm_dict: dict[str, dict[str, int]] = {}
     for i, true_cat in enumerate(CATEGORIES):
         cm_dict[true_cat] = {}
         for j, pred_cat in enumerate(CATEGORIES):
@@ -61,7 +63,7 @@ def run_test_set_evaluation() -> Dict[str, Any]:
         y_true, y_pred, labels=CATEGORIES, output_dict=True, zero_division=0
     )
 
-    per_class: Dict[str, Dict[str, float]] = {}
+    per_class: dict[str, dict[str, float]] = {}
     for cat in CATEGORIES:
         if cat in report:
             per_class[cat] = {

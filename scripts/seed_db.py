@@ -3,9 +3,9 @@ Database Seed Script.
 Populates the database with initial training sample tickets for testing and exploration.
 """
 
-import sys
-import os
 import json
+import os
+import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -38,7 +38,7 @@ def seed_tickets():
             payload = TicketCreate(ticket_id=t["ticket_id"], message=t["message"])
             service.create_ticket(payload)
             seeded_count += 1
-        except Exception as e:
+        except Exception:
             # Skip if already exists
             pass
 

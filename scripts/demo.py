@@ -8,16 +8,16 @@ Demonstrates all 5 mandatory checks:
   5. Human reviewer approval workflow (Draft -> Approved / READY)
 """
 
-import sys
 import os
-import json
+import sys
+
 from fastapi.testclient import TestClient
 
 # Ensure project root on PYTHONPATH
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from app.database import Base, engine, init_db
 from app.main import app
-from app.database import init_db, Base, engine
 
 client = TestClient(app)
 
@@ -99,7 +99,7 @@ def run_demo():
         "message": "Attempting to re-ingest duplicate ticket with the same ID."
     }
     resp = client.post("/api/v1/tickets", json=duplicate_payload)
-    print(f"[Request]: Ingesting ticket with existing ID 'DEMO-BILL-01'")
+    print("[Request]: Ingesting ticket with existing ID 'DEMO-BILL-01'")
     print(f"  Response Status Code: {resp.status_code} (Expected: 409 Conflict)")
     print(f"  Response Body       : {resp.json()}")
     assert resp.status_code == 409, f"Expected 409 Conflict, got {resp.status_code}"
@@ -133,7 +133,7 @@ def run_demo():
     get_resp = client.get(f"/api/v1/tickets/{ticket_to_approve}")
     assert get_resp.status_code == 200
     initial_ticket = get_resp.json()
-    print(f"[Pre-Approval State]:")
+    print("[Pre-Approval State]:")
     print(f"  Ticket ID   : {initial_ticket['ticket_id']}")
     print(f"  Status      : {initial_ticket['status']}")
     print(f"  Approved By : {initial_ticket['approved_by']}")
@@ -155,7 +155,7 @@ def run_demo():
     approve_resp = client.post(f"/api/v1/tickets/{ticket_to_approve}/approve", json=approval_payload)
     assert approve_resp.status_code == 200, f"Approval failed: {approve_resp.text}"
     approved_ticket = approve_resp.json()
-    print(f"\n[Post-Approval State]:")
+    print("\n[Post-Approval State]:")
     print(f"  Ticket ID      : {approved_ticket['ticket_id']}")
     print(f"  Status         : {approved_ticket['status']} (Successfully transitioned to READY for dispatch!)")
     print(f"  Approved By    : {approved_ticket['approved_by']}")

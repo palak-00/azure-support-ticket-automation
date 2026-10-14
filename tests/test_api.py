@@ -4,7 +4,6 @@ Covers ingestion, duplicate rejection, validation errors, approval workflow,
 and health checks.
 """
 
-import pytest
 
 
 def test_health_check(client):

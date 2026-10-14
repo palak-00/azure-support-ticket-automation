@@ -2,10 +2,10 @@
 Pydantic Schemas for Request Validation and Response Serialization.
 """
 
-from typing import Optional, Dict, Any, List
-from datetime import datetime
 import re
-from pydantic import BaseModel, Field, field_validator, ConfigDict
+from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class TicketCreate(BaseModel):
@@ -51,22 +51,22 @@ class TicketApprovalRequest(BaseModel):
         description="Identifier of support engineer or lead approving the ticket",
         examples=["engineer-alex"]
     )
-    reviewer_notes: Optional[str] = Field(
+    reviewer_notes: str | None = Field(
         default=None,
         max_length=1000,
         description="Optional notes recorded during human triage review"
     )
-    updated_draft_response: Optional[str] = Field(
+    updated_draft_response: str | None = Field(
         default=None,
         min_length=10,
         max_length=5000,
         description="Optional edited draft response before marking ready"
     )
-    updated_category: Optional[str] = Field(
+    updated_category: str | None = Field(
         default=None,
         description="Optional category override (Billing, Technical, Access, General)"
     )
-    updated_priority: Optional[str] = Field(
+    updated_priority: str | None = Field(
         default=None,
         description="Optional priority override (P1, P2, P3, P4)"
     )
@@ -99,11 +99,11 @@ class TicketResponse(BaseModel):
     status: str
     is_ambiguous: bool
     requires_manual_review: bool
-    routing_reason: Optional[str] = None
-    priority_reason: Optional[str] = None
-    reviewer_notes: Optional[str] = None
-    approved_by: Optional[str] = None
-    approved_at: Optional[datetime] = None
+    routing_reason: str | None = None
+    priority_reason: str | None = None
+    reviewer_notes: str | None = None
+    approved_by: str | None = None
+    approved_at: datetime | None = None
     created_at: datetime
     updated_at: datetime
 
@@ -115,11 +115,11 @@ class AccuracyMetrics(BaseModel):
     total_test_samples: int
     accuracy_percentage: float
     accuracy_ratio: str
-    per_class_metrics: Dict[str, Dict[str, float]]
-    confusion_matrix: Dict[str, Dict[str, int]]
+    per_class_metrics: dict[str, dict[str, float]]
+    confusion_matrix: dict[str, dict[str, int]]
     model_type: str
     trained_on_samples: int
-    priority_policy_summary: Dict[str, str]
+    priority_policy_summary: dict[str, str]
 
 
 class HealthResponse(BaseModel):

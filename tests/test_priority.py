@@ -2,7 +2,6 @@
 Unit tests for Priority Policy Engine and Reasoning.
 """
 
-import pytest
 from app.services.priority import determine_priority
 
 
