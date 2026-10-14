@@ -1,0 +1,272 @@
+[
+  {
+    "ticket_id": "TCK-101",
+    "message": "We were charged $2,450 twice for our Azure Cosmos DB usage on invoice INV-98124. Please refund the duplicate charge immediately as our corporate credit card is over limit.",
+    "category": "Billing",
+    "priority": "P2",
+    "assigned_team": "finance-billing-ops",
+    "split": "train",
+    "rationale": "Direct duplicate charge on invoice and credit card limit impact; financial remediation required."
+  },
+  {
+    "ticket_id": "TCK-102",
+    "message": "Can you provide a detailed breakdown of our Azure Blob Storage costs from last month? Our invoice shows an unexpected 40% surge in egress bandwidth charges.",
+    "category": "Billing",
+    "priority": "P3",
+    "assigned_team": "finance-billing-ops",
+    "split": "train",
+    "rationale": "Inquiry regarding cost breakdown and invoice explanation without service disruption."
+  },
+  {
+    "ticket_id": "TCK-103",
+    "message": "Our automated credit card charge failed this morning. We need to update our billing contact and payment method before subscription SUB-3321 gets suspended.",
+    "category": "Billing",
+    "priority": "P2",
+    "assigned_team": "finance-billing-ops",
+    "split": "train",
+    "rationale": "Imminent subscription suspension risk due to failed payment method."
+  },
+  {
+    "ticket_id": "TCK-104",
+    "message": "We need a tax exemption certificate applied to our Azure Enterprise Agreement billing profile. Who should we send our VAT exemption documentation to?",
+    "category": "Billing",
+    "priority": "P4",
+    "assigned_team": "finance-billing-ops",
+    "split": "train",
+    "rationale": "Routine administrative billing inquiry regarding tax documentation."
+  },
+  {
+    "ticket_id": "TCK-105",
+    "message": "Our subscription was automatically disabled due to an overdue payment notice sent to an inactive email. Production services are paused, we need immediate reactivation upon card payment!",
+    "category": "Billing",
+    "priority": "P1",
+    "assigned_team": "finance-billing-ops",
+    "split": "train",
+    "rationale": "Critical production outage directly caused by billing account suspension."
+  },
+  {
+    "ticket_id": "TCK-106",
+    "message": "Our production Azure Kubernetes Service (AKS) cluster nodes are in CrashLoopBackOff state. Core e-commerce checkout is returning HTTP 500 errors to all customers worldwide.",
+    "category": "Technical",
+    "priority": "P1",
+    "assigned_team": "cloud-infra-eng",
+    "split": "train",
+    "rationale": "Severe production outage affecting global customer transactions on AKS."
+  },
+  {
+    "ticket_id": "TCK-107",
+    "message": "Azure Function App 'prod-order-processor' is timing out with 504 Gateway Timeout when connecting to our Azure SQL Database. Connection pool seems exhausted.",
+    "category": "Technical",
+    "priority": "P2",
+    "assigned_team": "cloud-infra-eng",
+    "split": "train",
+    "rationale": "High-impact service degradation affecting order processing backend."
+  },
+  {
+    "ticket_id": "TCK-108",
+    "message": "We are noticing increased latency on our Azure Application Gateway ingress controller during peak traffic hours. Need guidance on tuning autoscaling settings.",
+    "category": "Technical",
+    "priority": "P3",
+    "assigned_team": "cloud-infra-eng",
+    "split": "train",
+    "rationale": "Performance optimization and latency inquiry with operational workaround."
+  },
+  {
+    "ticket_id": "TCK-109",
+    "message": "Our Terraform pipeline fails when deploying an Azure Virtual Network peering with error 'VnetPeeringLimitReached'. Can you verify the subscription network quota?",
+    "category": "Technical",
+    "priority": "P3",
+    "assigned_team": "cloud-infra-eng",
+    "split": "train",
+    "rationale": "Deployment pipeline blockage due to quota limit."
+  },
+  {
+    "ticket_id": "TCK-110",
+    "message": "Encountering intermittent SSL handshake errors on our custom domain configured with Azure Front Door. Is there a known regional incident?",
+    "category": "Technical",
+    "priority": "P2",
+    "assigned_team": "cloud-infra-eng",
+    "split": "train",
+    "rationale": "Intermittent customer-facing TLS degradation across custom domains."
+  },
+  {
+    "ticket_id": "TCK-111",
+    "message": "Our primary Azure Entra ID global administrator account is locked out after hardware token failure. No other admin can access tenant TEN-4491 to manage security policies.",
+    "category": "Access",
+    "priority": "P1",
+    "assigned_team": "iam-security-team",
+    "split": "train",
+    "rationale": "Complete administrative lockout from Azure tenant; critical security and operational impact."
+  },
+  {
+    "ticket_id": "TCK-112",
+    "message": "A new senior developer joined our team and needs Contributor role assignment on resource group 'rg-analytics-eastus'. Role request has manager approval.",
+    "category": "Access",
+    "priority": "P3",
+    "assigned_team": "iam-security-team",
+    "split": "train",
+    "rationale": "Standard RBAC permission onboarding request with manager signoff."
+  },
+  {
+    "ticket_id": "TCK-113",
+    "message": "Single Sign-On (SSO) via SAML 2.0 has stopped working for all employees logging into the Azure portal. Error: AADSTS50011 The reply URL specified in the request does not match.",
+    "category": "Access",
+    "priority": "P2",
+    "assigned_team": "iam-security-team",
+    "split": "train",
+    "rationale": "Widespread employee authentication failure affecting Azure portal access."
+  },
+  {
+    "ticket_id": "TCK-114",
+    "message": "Several developers reported that their Microsoft Authenticator push notifications are not reaching their devices following the iOS update. Need MFA reset.",
+    "category": "Access",
+    "priority": "P3",
+    "assigned_team": "iam-security-team",
+    "split": "train",
+    "rationale": "MFA device sync failure requiring identity verification and token re-enrollment."
+  },
+  {
+    "ticket_id": "TCK-115",
+    "message": "We need to audit user role assignments across all management groups and revoke inactive guest accounts that have not logged in for 90 days.",
+    "category": "Access",
+    "priority": "P4",
+    "assigned_team": "iam-security-team",
+    "split": "train",
+    "rationale": "Routine identity governance and security auditing maintenance."
+  },
+  {
+    "ticket_id": "TCK-116",
+    "message": "What is the recommended architecture and best practices for setting up Azure Landing Zones for a healthcare enterprise complying with HIPAA?",
+    "category": "General",
+    "priority": "P4",
+    "assigned_team": "customer-success-ops",
+    "split": "train",
+    "rationale": "Architecture guidance and compliance best practice advisory."
+  },
+  {
+    "ticket_id": "TCK-117",
+    "message": "Could you share the projected general availability date for Azure OpenAI GPT-4o in the Sweden Central region?",
+    "category": "General",
+    "priority": "P4",
+    "assigned_team": "customer-success-ops",
+    "split": "train",
+    "rationale": "Informational roadmap and feature availability inquiry."
+  },
+  {
+    "ticket_id": "TCK-118",
+    "message": "Our enterprise agreement renewal is scheduled for Q4. We would like to schedule a call with our Cloud Solutions Architect to review our cloud adoption roadmap.",
+    "category": "General",
+    "priority": "P3",
+    "assigned_team": "customer-success-ops",
+    "split": "train",
+    "rationale": "Commercial roadmap and architecture planning consultation."
+  },
+  {
+    "ticket_id": "TCK-119",
+    "message": "Can you provide the SOC 2 Type II compliance reports and ISO 27001 certificates for Azure data centers in North Europe for our internal compliance audit?",
+    "category": "General",
+    "priority": "P4",
+    "assigned_team": "customer-success-ops",
+    "split": "train",
+    "rationale": "Compliance documentation retrieval from Azure Service Trust Portal."
+  },
+  {
+    "ticket_id": "TCK-120",
+    "message": "We would like to request a feature enhancement for the Azure Portal UI to allow custom dashboard tagging and dark mode contrast adjustments.",
+    "category": "General",
+    "priority": "P4",
+    "assigned_team": "customer-success-ops",
+    "split": "train",
+    "rationale": "Feature request and usability cosmetic feedback."
+  },
+  {
+    "ticket_id": "TCK-201",
+    "message": "We were invoiced for Azure Cognitive Services that were decommissioned three weeks ago. Please review invoice INV-44901 and initiate a billing adjustment.",
+    "category": "Billing",
+    "priority": "P3",
+    "assigned_team": "finance-billing-ops",
+    "split": "test",
+    "rationale": "Billing dispute regarding decommissioned resource on invoice."
+  },
+  {
+    "ticket_id": "TCK-202",
+    "message": "Our Azure subscription has been suspended due to unexpected spending limit cap reached on our billing account. All staging environments are offline.",
+    "category": "Billing",
+    "priority": "P2",
+    "assigned_team": "finance-billing-ops",
+    "split": "test",
+    "rationale": "Subscription cap reached leading to environment deactivation."
+  },
+  {
+    "ticket_id": "TCK-203",
+    "message": "Unauthorized charges exceeding $15,000 appeared on our corporate credit card overnight from an unknown Azure subscription linked to our tenant. This appears to be fraudulent!",
+    "category": "Billing",
+    "priority": "P1",
+    "assigned_team": "finance-billing-ops",
+    "split": "test",
+    "rationale": "Critical fraud / major unauthorized financial risk on customer card."
+  },
+  {
+    "ticket_id": "TCK-204",
+    "message": "CRITICAL OUTAGE: Our primary Azure SQL database in East US is completely unresponsive. All production web apps are throwing 500 Internal Server Errors.",
+    "category": "Technical",
+    "priority": "P1",
+    "assigned_team": "cloud-infra-eng",
+    "split": "test",
+    "rationale": "Complete database outage bringing down production web applications."
+  },
+  {
+    "ticket_id": "TCK-205",
+    "message": "Azure DevOps CI/CD deployment pipeline fails on step 'AzureResourceManagerTemplateDeployment' with error code 'ResourceGroupNotFound'.",
+    "category": "Technical",
+    "priority": "P3",
+    "assigned_team": "cloud-infra-eng",
+    "split": "test",
+    "rationale": "Pipeline failure during ARM template deployment."
+  },
+  {
+    "ticket_id": "TCK-206",
+    "message": "Our Azure Virtual Machines in West Europe are experiencing severe CPU throttling and packet loss, causing major microservice latency.",
+    "category": "Technical",
+    "priority": "P2",
+    "assigned_team": "cloud-infra-eng",
+    "split": "test",
+    "rationale": "Infrastructure performance degradation affecting live microservices."
+  },
+  {
+    "ticket_id": "TCK-207",
+    "message": "Multiple remote engineers cannot access the Azure Virtual Desktop host pool because conditional access policy blocks their IP subnet unexpectedly.",
+    "category": "Access",
+    "priority": "P2",
+    "assigned_team": "iam-security-team",
+    "split": "test",
+    "rationale": "Conditional access policy blocking employee access to corporate VDI."
+  },
+  {
+    "ticket_id": "TCK-208",
+    "message": "Please grant Read-only Reader permissions to our external auditor on subscription 'sub-fintech-prod' for the upcoming financial audit.",
+    "category": "Access",
+    "priority": "P3",
+    "assigned_team": "iam-security-team",
+    "split": "test",
+    "rationale": "Auditor role assignment request under governance policy."
+  },
+  {
+    "ticket_id": "TCK-209",
+    "message": "Where can I find the official Azure documentation and pricing tiers for the newly released Azure Container Apps managed serverless GPUs?",
+    "category": "General",
+    "priority": "P4",
+    "assigned_team": "customer-success-ops",
+    "split": "test",
+    "rationale": "Product documentation and general pricing inquiry."
+  },
+  {
+    "ticket_id": "TCK-210",
+    "message": "We would like to explore enrolling our organization into the Azure FastTrack partner program. Who is our primary regional contact?",
+    "category": "General",
+    "priority": "P4",
+    "assigned_team": "customer-success-ops",
+    "split": "test",
+    "rationale": "Partner program enablement and point-of-contact request."
+  }
+]

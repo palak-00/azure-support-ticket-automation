@@ -1,0 +1,148 @@
+{
+  "total_test_samples": 10,
+  "correct_predictions": 9,
+  "accuracy_percentage": 90.0,
+  "accuracy_ratio": "9/10",
+  "per_class_metrics": {
+    "Billing": {
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1_score": 0.857,
+      "support": 3
+    },
+    "Technical": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 3
+    },
+    "Access": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 2
+    },
+    "General": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1_score": 0.667,
+      "support": 2
+    }
+  },
+  "confusion_matrix": {
+    "Billing": {
+      "Billing": 3,
+      "Technical": 0,
+      "Access": 0,
+      "General": 0
+    },
+    "Technical": {
+      "Billing": 0,
+      "Technical": 3,
+      "Access": 0,
+      "General": 0
+    },
+    "Access": {
+      "Billing": 0,
+      "Technical": 0,
+      "Access": 2,
+      "General": 0
+    },
+    "General": {
+      "Billing": 1,
+      "Technical": 0,
+      "Access": 0,
+      "General": 1
+    }
+  },
+  "predictions_detail": [
+    {
+      "ticket_id": "TCK-201",
+      "true_category": "Billing",
+      "predicted_category": "Billing",
+      "confidence": 0.563,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-202",
+      "true_category": "Billing",
+      "predicted_category": "Billing",
+      "confidence": 0.58,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-203",
+      "true_category": "Billing",
+      "predicted_category": "Billing",
+      "confidence": 0.637,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-204",
+      "true_category": "Technical",
+      "predicted_category": "Technical",
+      "confidence": 0.5921,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-205",
+      "true_category": "Technical",
+      "predicted_category": "Technical",
+      "confidence": 0.5944,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-206",
+      "true_category": "Technical",
+      "predicted_category": "Technical",
+      "confidence": 0.5613,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-207",
+      "true_category": "Access",
+      "predicted_category": "Access",
+      "confidence": 0.4767,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-208",
+      "true_category": "Access",
+      "predicted_category": "Access",
+      "confidence": 0.4011,
+      "is_ambiguous": false,
+      "correct": true
+    },
+    {
+      "ticket_id": "TCK-209",
+      "true_category": "General",
+      "predicted_category": "Billing",
+      "confidence": 0.3516,
+      "is_ambiguous": true,
+      "correct": false
+    },
+    {
+      "ticket_id": "TCK-210",
+      "true_category": "General",
+      "predicted_category": "General",
+      "confidence": 0.4954,
+      "is_ambiguous": false,
+      "correct": true
+    }
+  ],
+  "model_type": "TF-IDF (1,2-grams) + Calibrated Logistic Regression + Azure Domain Semantics",
+  "trained_on_samples": 20,
+  "priority_policy_summary": {
+    "P1": "Critical production outage, security lockout, or financial fraud (<15m SLA)",
+    "P2": "High degradation of business workflow or payment suspension (<1h SLA)",
+    "P3": "Medium operational request with workaround (<4h SLA)",
+    "P4": "Low advisory, roadmap, or documentation inquiry (<24h SLA)"
+  }
+}
