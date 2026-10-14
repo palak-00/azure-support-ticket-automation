@@ -10,6 +10,8 @@ jobs:
   test-and-evaluate:
     name: Run Unit Tests, CI Checks & Model Evaluation
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
 
     steps:
       - name: Checkout Code
@@ -28,7 +30,7 @@ jobs:
 
       - name: Syntax and Code Style Check (Ruff)
         run: |
-          ruff check .
+          ruff check --select E,F,W --ignore E501 .
 
       - name: Evaluate Classifier on Reserved Test Set (>= 80% Target)
         run: |
@@ -36,7 +38,7 @@ jobs:
 
       - name: Execute Full PyTest Suite with Code Coverage
         run: |
-          pytest -v --cov=app --cov-report=xml --cov-report=term-missing
+          python -m pytest --cov=app --cov-report=xml --cov-report=term-missing
 
       - name: Upload Test Coverage Artifact
         uses: actions/upload-artifact@v4
